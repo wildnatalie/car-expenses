@@ -1,0 +1,26 @@
+html, body {
+    color: #34495e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
+}
+
+a {
+    color: #7f8c8d;
+    transition: all .3s ease;
+}
+
+a:hover, a:focus {
+    color: #50595a;
+    text-decoration: none;
+}
+
+header {
+    padding: 2rem;
+    background-color: #BFD2D4;
+}
+
+main {
+    padding-top: 2rem;
+}
