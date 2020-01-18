@@ -1,0 +1,56 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-sm-10 col-md-8 col-xl-6 py-3">
+                <h2>Wydatki</h2>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-8 col-xl-6 py-3 text-md-right">
+                    <a href="{% url 'expense_new' %}">Dodaj nowy wydatek</a>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-xl-6 py-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Lp.</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Opis</th>
+                            <th scope="col">Kwota</th>
+                            <th scope="col">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for expense in expenses %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ expense.expense_date }}</td>
+                                <td>{{ expense.description }}</td>
+                                <td class="text-right">{{ expense.amount }}</td>
+                                <td class="actions">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'expense_edit' pk=expense.pk %}"><i class="material-icons">edit</i></a>
+                                        <a href="{% url 'expense_remove' pk=expense.pk %}"><i class="material-icons">delete</i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Razem:</strong></td>
+                            <td class="text-right"><strong>{{ total_sum }}</strong></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
