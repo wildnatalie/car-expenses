@@ -20,6 +20,15 @@
     <div id="wrapper">
         <header>
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col text-right">
+                        {% if user.is_authenticated %}
+                            <small>Witaj, {{ user.username }}! <a href="{% url 'logout' %}">(Wyloguj)</a></small>
+                        {% else %}
+                            <small><a href="{% url 'login' %}">Zaloguj</a></small>
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <a href="{% url 'summary' %}"><h1 class="text-center">Renowacja Fiata 126p - koszty</h1></a>

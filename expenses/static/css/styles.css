@@ -24,3 +24,13 @@ header {
 main {
     padding-top: 2rem;
 }
+
+.expense-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.expense-form input, .expense-form textarea {
+    width: 100%;
+}
